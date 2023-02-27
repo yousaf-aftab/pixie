@@ -1,0 +1,30 @@
+---
+name: snyk vulnerability scan
+
+on: [push]
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.SNYK_GITHUB_TOKEN }}
+        
+      
+      # Install Snyc CLI
+      - name: Install Snyk CLI
+        run: npm install -g snyk
+
+      # Run Snyc scan
+      - name: Run Snyk Scan
+        env: 
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SNYK_GITHUB_TOKEN }}
+        run: |
+          snyk auth $SNYK_TOKEN --github-token=$GITHUB_TOKEN
+          snyk test
+        
+    
