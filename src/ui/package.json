@@ -109,7 +109,7 @@
     "history": "^4.10.1",
     "jose": "^4.9.3",
     "launchdarkly-react-client-sdk": "^2.20.0",
-    "monaco-editor": "0.20.0",
+    "monaco-editor": "0.35.0",
     "mustache": "^4.2.0",
     "numeral": "^2.0.6",
     "oidc-client": "^1.11.5",
